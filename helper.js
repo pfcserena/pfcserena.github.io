@@ -142,7 +142,7 @@ function createAudioHTML(path) {
     '2670ff3f-57e5-4871-b582-444d168f7da9',
   ];
   
-  const unconditionalSpeechFilenames = [
+  const syntetictAudios = [
     '1',
     '2',
     '3',
@@ -181,7 +181,8 @@ function createAudioHTML(path) {
   ];
   
   const pianoFilenames = ['4', '0', '1', '2'];
-  
+ 
+  /*
   generateContinuationTable(
       'librispeech-test-clean-table', librispeechTestCleanContinuationFilenames,
       1);
@@ -189,9 +190,10 @@ function createAudioHTML(path) {
   generateContinuationTable(
       'librispeech-test-other-table', librispeechTestOtherContinuationFilenames,
       1);
+*/
   generateSimpleTable(
-      'unconditional-speech-table', unconditionalSpeechFilenames,
-      prefix = 'audio_samples/unconditional_speech/');
+      'synteticAudios-table', syntetictAudios,
+      prefix = 'files/sintetica_demo/');
   generateSimpleTable(
       'semantic-only-table', acousticOnlyFilenames,
       prefix = 'audio_samples/speech_soundstream_only/');
