@@ -1,8 +1,3 @@
----
-layout: default
-title: Mi sitio web
----
-
 # Sensado, monitoreo y estudio del entorno sonoro para la evaluación del impacto antropogénico en Antártida
 
 Este es el contenido de mi sitio web.
