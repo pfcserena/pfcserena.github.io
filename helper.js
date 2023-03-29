@@ -3,6 +3,10 @@ function createAudioHTML(path) {
         path +
         ' type="audio/wav">Your browser does not support the audio element.</audio>';
   }
+
+function createTextHTML(text) {
+    return '<p>' + text + '</p>';
+  }
   const numPerPage = 4;
   
   function generateContinuationTable(tableId, filenames, page) {
@@ -107,6 +111,20 @@ function createAudioHTML(path) {
       cell.innerHTML = createAudioHTML(prefix + filenames[i] + '_cont.wav');
     }
   }
+
+  function generateAnalisisTable(tableId, filenames) {
+    let table = document.getElementById(tableId);
+    let prefix = 'files/real_demo/';
+    for (let i = 0; i < filenames.length; i++) {
+      let row = table.insertRow(i + 1);
+      let cell = row.insertCell(0);
+      cell.innerHTML = createAudioHTML(prefix + filenames[i] + '.wav');
+  
+      cell = row.insertCell(1);
+      cell.innerHTML = createTextHTML("Audio " + i);
+  
+    }
+  }
   
   const librispeechTestCleanContinuationFilenames = [
     '1f385851-dc66-4da8-ac1b-8f5173f68649',
@@ -156,6 +174,21 @@ function createAudioHTML(path) {
     '11',
     '12',
   ];
+
+  const realAudios = [
+    'ArdPF_20211216_090000',
+    'BCAA2_20220105_110000',
+    'BCAA2_20220113_140000',
+    'fondo_ArdPF_20211216_090000',
+    'Frei_20211206_180000',
+    'Frei_20220124_120000',
+    'Frei_20220125_160000',
+    'Frei_20220125_200000',
+    '9',
+    '10',
+    '11',
+    '12',
+  ];
   
   const acousticOnlyFilenames = [
     'ss_only_1',
@@ -195,9 +228,10 @@ function createAudioHTML(path) {
       'synteticAudios-table', syntetictAudios,
       prefix = 'files/sintetica_demo/');
   generateSimpleTable(
-      'semantic-only-table', acousticOnlyFilenames,
-      prefix = 'audio_samples/speech_soundstream_only/');
+      'realAudios-table', realAudios,
+      prefix = 'files/real_demo/');
   
+ /*     
   generateAcousticGenerationTable(
       'acoustic-generation-table', librispeechTestCleanContinuationFilenames, 1);
   
@@ -205,6 +239,8 @@ function createAudioHTML(path) {
       'soundstream-table', soundStreamComparisonFilenames, 1);
   
   generatePianoTable('piano-table', pianoFilenames, 1);
+  */
+  generateAnalisisTable('analisis-table', realAudios, 1);
   
   $(document).ready(function() {
     for (let i = 1; i <= 5; i++) {
