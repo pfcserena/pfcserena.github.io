@@ -175,6 +175,15 @@ function createTextHTML(text) {
     '12',
   ];
 
+  const syntetictAudiosBackground = [
+    'Only_Background_soundscape_unimodal16',
+    'Only_Background_soundscape_unimodal239',
+    'Only_Background_soundscape_unimodal751',
+    'Only_Background_soundscape_unimodal1093',
+    'Only_Background_soundscape_unimodal1113',
+    'Only_Background_soundscape_unimodal1143',
+  ];
+
   const realAudios = [
     'ArdPF_20211216_090000',
     'BCAA2_20220105_110000',
@@ -188,6 +197,24 @@ function createTextHTML(text) {
     '10',
     '11',
     '12',
+  ];
+
+  const realAudiosMotor = [
+    'BCAA1_20211207_190000_motor3',
+    'BCAA1_20211207_190000_motor11',
+    'BCAA1_20211230_140000_motor3',
+    'BCAA1_20220218_130000_motor1',
+    'Frei_20211206_180000_motor2',
+    'Frei_20220125_000000_motor2',
+  ];
+
+  const realAudiosAereo = [
+    'Frei_20211206_180000_avion2',
+    'ArdPF_20211216_090000_avion2',
+    'Frei_20211206_180000_avion4',
+    'Frei_20220125_150000_avion3',
+    'Frei_20220125_200000_helicoptero1',
+    'Frei_20220125_200000_helicoptero3',
   ];
   
   const acousticOnlyFilenames = [
@@ -227,10 +254,23 @@ function createTextHTML(text) {
   generateSimpleTable(
       'synteticAudios-table', syntetictAudios,
       prefix = 'files/sintetica_demo/');
+
+  generateSimpleTable(
+    'synteticAudios-table_back', syntetictAudiosBackground,
+    prefix = 'files/sintetica_demo/backgrounds/');
+
   generateSimpleTable(
       'realAudios-table', realAudios,
       prefix = 'files/real_demo/');
-  
+
+  generateSimpleTable(
+    'realAudios-table_aereo', realAudiosAereo,
+    prefix = 'files/real_demo/aereos/');
+      
+  generateSimpleTable(
+      'realAudios-table_motor', realAudiosMotor,
+      prefix = 'files/real_demo/terrestresyacuaticos/');
+
  /*     
   generateAcousticGenerationTable(
       'acoustic-generation-table', librispeechTestCleanContinuationFilenames, 1);
