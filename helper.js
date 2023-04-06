@@ -203,19 +203,13 @@ function createTextHTML(text) {
   ];
 
 
-  const realAudios = [
-    'ArdPF_20211216_090000',
-    'BCAA2_20220105_110000',
-    'BCAA2_20220113_140000',
-    'fondo_ArdPF_20211216_090000',
-    'Frei_20211206_180000',
-    'Frei_20220124_120000',
-    'Frei_20220125_160000',
-    'Frei_20220125_200000',
-    '9',
-    '10',
-    '11',
-    '12',
+  const realAudiosBackground = [
+    'ArdPF_20220112_010000_bg3',
+    'ArdPF_20220112_010000_bg4',
+    'Drake_20220105_190000_bg1',
+    'Drake_20220105_190000_bg2',
+    'Drake_20220108_200000_bg5',
+    'Drake_20220108_200000_bg6',
   ];
 
   const realAudiosMotor = [
@@ -271,7 +265,7 @@ function createTextHTML(text) {
       1);
 */
   generateSimpleTable(
-      'synteticAudios-table_terrestres', syntetictAudiosTerrestres,
+      'synteticAudios-table_motor', syntetictAudiosTerrestres,
       prefix = 'files/sintetica_demo/terrestresyacuaticos/');
 
   generateSimpleTable(
@@ -284,8 +278,8 @@ function createTextHTML(text) {
 
 
   generateSimpleTable(
-      'realAudios-table', realAudios,
-      prefix = 'files/real_demo/');
+      'realAudios-table_back', realAudiosBackground,
+      prefix = 'files/real_demo/backgrounds/');
 
   generateSimpleTable(
     'realAudios-table_aereo', realAudiosAereo,
@@ -304,7 +298,7 @@ function createTextHTML(text) {
   
   generatePianoTable('piano-table', pianoFilenames, 1);
   */
-  generateAnalisisTable('analisis-table', realAudios, 1);
+  generateAnalisisTable('analisis-table', realAudiosBackground, 1);
   
   $(document).ready(function() {
     for (let i = 1; i <= 5; i++) {
