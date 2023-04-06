@@ -184,6 +184,25 @@ function createTextHTML(text) {
     'Only_Background_soundscape_unimodal1143',
   ];
 
+  const syntetictAudiosAereos = [
+    'Vehículos_Aereos_soundscape_unimodal1',
+    'Vehículos_Aereos_soundscape_unimodal60',
+    'Vehículos_Aereos_soundscape_unimodal69',
+    'Vehículos_Aereos_soundscape_unimodal93',
+    'Vehículos_Aereos_soundscape_unimodal257',
+    'Vehículos_Aereos_soundscape_unimodal839',
+  ];
+
+  const syntetictAudiosTerrestres = [
+    'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal40',
+    'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal44',
+    'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal113',
+    'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal198',
+    'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal417',
+    'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal601',
+  ];
+
+
   const realAudios = [
     'ArdPF_20211216_090000',
     'BCAA2_20220105_110000',
@@ -252,12 +271,17 @@ function createTextHTML(text) {
       1);
 */
   generateSimpleTable(
-      'synteticAudios-table', syntetictAudios,
-      prefix = 'files/sintetica_demo/');
+      'synteticAudios-table_terrestres', syntetictAudiosTerrestres,
+      prefix = 'files/sintetica_demo/terrestresyacuaticos/');
 
   generateSimpleTable(
     'synteticAudios-table_back', syntetictAudiosBackground,
     prefix = 'files/sintetica_demo/backgrounds/');
+
+  generateSimpleTable(
+    'synteticAudios-table_aereos', syntetictAudiosAereos,
+    prefix = 'files/sintetica_demo/aereos/');
+
 
   generateSimpleTable(
       'realAudios-table', realAudios,
