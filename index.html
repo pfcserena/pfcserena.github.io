@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="helper.js" defer></script>
+    <link rel = "icon" type = "image/png" href = "img/icon.png">
     <style>
       td {
         vertical-align: middle;
@@ -19,6 +20,13 @@
         min-width: 100px;
         max-width: 250px;
       }
+      body {
+        background-image: url('img/bg.JPG');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        opacity: 0.9;
+        background-size: 100% 100%;
+      }
     </style>
   </head>
   <body>
@@ -27,20 +35,22 @@
         <h1>SERENA</h1>
         <h3 style="margin-bottom: 20px;">Sensado, monitoreo y estudio del entorno sonoro para  <br> la evaluación del impacto antropogénico en Antártida </h3>
       </div>
-      <p>
-        <b>Abstract.</b> ....
+      <p align="justify">
+        <b>Resumen.</b> El proyecto de fin de carrera SERENA surge en colaboración con el proyecto "Antartic Soundscapes" de Facultad de Ciencias (UdelaR), el cual tiene como objetivo estudiar el impacto antropogénico en el ambiente sonoro de la Antártida a partir de grabaciones del paisaje sonoro. 
+        Durante el proyecto SERENA se implementaron algoritmos de aprendizaje automático para la identificación de fuentes sonoras de interés.
       </p>
     </div>
 
     
     <div class="container shadow p-5 mb-5 bg-white rounded">
-      <h3>Audios Sintético</h3>
+      <h3>Audios Sintéticos</h3>
 
       <p class="mb-0">
         <br />
-        Ejemplos de Audios Sintéticos. 
+        Para la generación de la base sintética se utilizó <a href="https://github.com/justinsalamon/scaper">Scaper</a>, una biblioteca de Python que crea nuevos paisajes sonoros a partir de combinar y transformar un conjunto de archivos de audio existentes.  A continuación se muestran algunos ejemplos de los audios sintéticos generados. 
       </p>
 
+      <!-- Solo Fondo -->
       <div class="container pt-3 table-responsive">
         <table
           class="table table-striped table-hover"
@@ -48,11 +58,38 @@
         >
           <thead>
             <tr>
-              <th>Muestras ...</th>
+              <th>Ejemplos de Muestras de Fondo</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
+
+        <!-- Vehículos Aereos -->
+        <table
+        class="table table-striped table-hover"
+        id="synteticAudios-table"
+      >
+        <thead>
+          <tr>
+            <th>Ejemplos de Muestras de Vehículos Aéreos</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- Vehículos Terrestres -->
+        <table
+        class="table table-striped table-hover"
+        id="synteticAudios-table"
+      >
+        <thead>
+          <tr>
+            <th>Ejemplos de Muestras de Vehículos Terrestres y Acuáticos</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
       </div>
     </div>
 
