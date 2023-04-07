@@ -112,16 +112,20 @@ function createTextHTML(text) {
     }
   }
 
-  function generateAnalisisTable(tableId, filenames) {
+  function generateAnalisisTable(tableId, prefix , filenames) {
     let table = document.getElementById(tableId);
-    let prefix = 'files/real_demo/';
     for (let i = 0; i < filenames.length; i++) {
       let row = table.insertRow(i + 1);
       let cell = row.insertCell(0);
-      cell.innerHTML = createAudioHTML(prefix + filenames[i] + '.wav');
-  
+      cell.innerHTML = createAudioHTML(prefix + filenames[i][0] + '.wav');
       cell = row.insertCell(1);
-      cell.innerHTML = createTextHTML("Audio " + i);
+      cell.innerHTML = createTextHTML(filenames[i][1]);
+
+      cell = row.insertCell(2);
+      cell.innerHTML = createTextHTML(filenames[i][2]);
+
+      cell = row.insertCell(3);
+      cell.innerHTML = createTextHTML(filenames[i][3]);
   
     }
   }
@@ -241,19 +245,13 @@ function createTextHTML(text) {
     'ss_only_8',
   ];
   
-  const soundStreamComparisonFilenames = [
-    '0944c955-dc0b-4c87-a006-02d0f12adeec',
-    '7e4cf66b-7da9-4261-954b-17004f4684e6',
-    'f3ae9437-ab9b-4444-ad12-4ea2d29fc6f8',
-    'ed2dc23b-868a-470f-a843-b22091152ea2',
-    'd3b1f250-2e55-4f6c-be0d-7d7fc9428464',
-    'bb632b5f-6c31-4966-a24d-dc112ba79873',
-    '497b5be1-e5f7-49dd-b244-67df3817d25b',
-    '3242966b-4c6a-49a2-8687-efd36546c8ba',
-  
+  const analisisAereoTrue = [
+    ['Vehiculos_Aereos_soundscape_unimodal116', 0.000013, 0.999959, 'Se escucha acercándose un avión, y el modelo lo clasifica bien. Está presente en prácticamente todo el fragmento.'], 
+    ['Vehiculos_Aereos_soundscape_unimodal570', 0.613815, 0.88884, 'Es claro que hay una fuente, que bien podría ser un motor o un avión. Parece ser inespecífico, y el modelo lo clasifica como ambas clases. La etiqueta original es aéreo, pero es ambiguo.'], 
+    ['Vehiculos_Aereos_soundscape_unimodal123', 0.917612, 0.017494, 'El avión se escucha en la primera mitad del audio y luego no hay fuente. Su sonido es similar a los audios de motores de esta misma base. Se clasifica como motor.'], 
+    ['Vehiculos_Aereos_soundscape_unimodal37', 0.261592, 0.496274, 'En este audio se escucha claramente un avión, pero la confianza en la clasificación no supera el umbral, por lo que no se logra clasificar correctamente. El modelo falla en otorgar una confianza menor al umbral para esta fuente.'],
   ];
-  
-  const pianoFilenames = ['4', '0', '1', '2'];
+
  
   /*
   generateContinuationTable(
@@ -293,12 +291,16 @@ function createTextHTML(text) {
   generateAcousticGenerationTable(
       'acoustic-generation-table', librispeechTestCleanContinuationFilenames, 1);
   
-  generateSoundStreamTable(
-      'soundstream-table', soundStreamComparisonFilenames, 1);
   
-  generatePianoTable('piano-table', pianoFilenames, 1);
   */
-  generateAnalisisTable('analisis-table', realAudiosBackground, 1);
+
+  
+
+  generateAnalisisTable('analisis-table-synt-aereo', 'files/sintetica_analisis/aereo_true/' ,analisisAereoTrue, 1);
+
+  generateAnalisisTable('analisis-table', 'files/sintetica_analisis/aereo_true/' , realAudiosBackground, 1);
+
+  generateAnalisisTable('analisis-table-real', 'files/sintetica_analisis/aereo_true/' ,realAudiosBackground, 1);
   
   $(document).ready(function() {
     for (let i = 1; i <= 5; i++) {
@@ -336,14 +338,4 @@ function createTextHTML(text) {
       });
     }
   
-    for (let i = 1; i <= 5; i++) {
-      let id = '#soundstream-page-' + i;
-      $(id).click(function() {
-        generateSoundStreamTable(
-            'soundstream-table', soundStreamComparisonFilenames, i);
-        $(id).parent().siblings().removeClass('active');
-        $(id).parent().addClass('active');
-        return false;
-      });
-    }
   });
