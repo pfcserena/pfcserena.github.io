@@ -222,6 +222,12 @@ function createTextHTML(text) {
     ['lancha2', 0.011228, 0.997381, 'En esta situación hay presencia de una lancha en donde el motor se encuentra en segundo plano. El modelo identifica erróneamente la presencia de un vehículo aéreo.'], 
   ];
 
+  const analisisBackTrueReal = [
+    ['Drake_20211229_110000_bg1', 0.004027 , 0.000692, 'No hay presencia de fuentes y es detectado correctamente asignado scores bajos'], 
+    ['PtaEu_20211231_180000_bg2', 0.005569, 0.022117, 'La ausencia de fuentes se detecta adecuadamente, se asignan puntuaciones bajas en consecuencia.'], 
+    ['ArdPF_20220108_200000_bg3', 0.002243, 0.999602  , 'Ejemplo de confusión de un animal antártico con un vehículo aéreo.'], 
+   ];
+
   /* Display Syntetic Audios */
   generateSimpleTable(
       'synteticAudios-table_motor', syntetictAudiosTerrestres,
@@ -264,5 +270,5 @@ function createTextHTML(text) {
 
   generateAnalisisTable('analisis-table-real-motores', 'files/real_analisis/motor_true/' , analisisMotorTrueReal, 1);
 
-  generateAnalisisTable('analisis-table-real', 'files/sintetica_analisis/aereo_true/' ,realAudiosBackground, 1);  
+  generateAnalisisTable('analisis-table-real-background', 'files/real_analisis/back_true/' ,analisisBackTrueReal, 1);  
   
