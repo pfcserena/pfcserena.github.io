@@ -130,45 +130,7 @@ function createTextHTML(text) {
     }
   }
   
-  const librispeechTestCleanContinuationFilenames = [
-    '1f385851-dc66-4da8-ac1b-8f5173f68649',
-    '72acf312-63e0-443c-ac05-abe1e74e8367',
-    'f3ae9437-ab9b-4444-ad12-4ea2d29fc6f8',
-    'ff338b2c-c140-4e3a-ba31-87d2093cf70c',
-    'e7594c11-e34e-4db6-a853-6f0ddc356f08',
-    '7e4cf66b-7da9-4261-954b-17004f4684e6',
-    '103583eb-3eb9-488b-a591-3ffac262c810',
-    '75389290-9ec1-45f9-b7f8-942637e5e644',
-    '497b5be1-e5f7-49dd-b244-67df3817d25b',
-    '81aff5f4-88b7-49b5-96d9-d5ec85ce64ea',
-    'd3b1f250-2e55-4f6c-be0d-7d7fc9428464',
-    '4093adea-d36c-42b8-a165-14cc5fceb461',
-    'e41a4d2f-d790-483e-8b80-10525e180675',
-    '76da8572-9381-4b8e-bf33-14b82ac32de8',
-    '75adcb3a-7e6f-47b6-aa7b-c528fcfb7fe8',
-    '3242966b-4c6a-49a2-8687-efd36546c8ba',
-    '2eb8ed00-8994-49f5-aa86-5b0450283dd6',
-    '23f51675-43da-4bc4-8f31-db866152b080',
-    'bb632b5f-6c31-4966-a24d-dc112ba79873',
-    'e3223207-381f-45de-bf30-63cee54316f2',
-  ];
-  
-
-  const syntetictAudios = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-  ];
-
+ 
   const syntetictAudiosBackground = [
     'Only_Background_soundscape_unimodal16',
     'Only_Background_soundscape_unimodal239',
@@ -225,23 +187,36 @@ function createTextHTML(text) {
   ];
   
   
-  const analisisAereoTrue = [
+  const analisisAereoTrueSynt = [
     ['Vehiculos_Aereos_soundscape_unimodal116', 0.000013, 0.999959, 'Se escucha acercándose un avión, y el modelo lo clasifica bien. Está presente en prácticamente todo el fragmento.'], 
     ['Vehiculos_Aereos_soundscape_unimodal570', 0.613815, 0.88884, 'Es claro que hay una fuente, que bien podría ser un motor o un avión. Parece ser inespecífico, y el modelo lo clasifica como ambas clases. La etiqueta original es aéreo, pero es ambiguo.'], 
     ['Vehiculos_Aereos_soundscape_unimodal123', 0.917612, 0.017494, 'El avión se escucha en la primera mitad del audio y luego no hay fuente. Su sonido es similar a los audios de motores de esta misma base. Se clasifica como motor.'], 
     ['Vehiculos_Aereos_soundscape_unimodal37', 0.261592, 0.496274, 'En este audio se escucha claramente un avión, pero la confianza en la clasificación no supera el umbral, por lo que no se logra clasificar correctamente. El modelo falla en otorgar una confianza menor al umbral para esta fuente.'],
   ];
 
-  const analisisMotoresTrue = [
+  const analisisMotoresTrueSynt = [
     ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal38', 0.998917, 0.003778, 'Fuente en primer plano, durante todo el fragmento, bien clasificado como motor.'], 
     ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal300', 0.999779, 0.000599, 'Es evidente que hay un motor en primer plano, y está correctamente clasificado como tal.'], 
     ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal102', 0.145242, 0.0798, 'Se escucha un sonido que podría deberse a saturación por viento o a una fuente, pero resulta tan evidente que sea un motor. Se asigna una confianza mayor a cero a esta clase pero no llega al umbral de decisión, por tanto se clasifica como fondo.'], 
     ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal107', 0.095523, 0.885046, 'Se nota claramente que hay un motor. Se clasifica como aéreo.'],
   ];
  
-  const analisisBackTrue = [
+  const analisisBackTrueSynt = [
     ['Only_Background_soundscape_unimodal120', 0.001555, 0.000097, 'Si bien se escucha viento, no se encuentra saturado. Correctamente clasificado como fondo.'], 
     ['Only_Background_soundscape_unimodal238', 0.791876, 0.000635, 'Este audio corresponde a fondo, si bien se escucha sobre el final una fuente no especificada. El modelo lo clasifica como motor, pero bien podría tratarse de un conjunto de vocalizaciones de animales.'], 
+  ];
+
+  const analisisAereosTrueReal = [
+    ['Frei_20211206_180000_avion2', 0.001285, 0.99321, 'Fragmento con presencia de vehículos aéreos en primer plano el cual el sistema logra identificar correctamente.'], 
+    ['Frei_20220125_200000_helicoptero4', 0.002231, 0.993604, 'Nuevamente se escucha la fuente en primer plano y el modelo clasifica correctamente con alta confianza.'], 
+    ['ArdPF_20211216_090000_avion2', 0.006574, 0.941115, 'Fragmento con presencia de fuente en segundo plano, aún así el modelo logra clasificarlo correctamente.'], 
+    ['Frei_20211206_180000_avion4', 0.010079, 0.960842, 'Se escucha nuevamente un vehículo aéreo en segundo plano, y el modelo lo identifica correctamente.'], 
+    ['Frei_20220125_200000_helicoptero6', 0.069222, 0.3014, 'Se escucha un helicóptero en segundo plano. Si bien el modelo tiene un score no despreciable en la predicción de aéreo no logra identificar con la suficiente confianza la presencia de la fuente. '], 
+  ];
+
+  const analisisMotorTrueReal = [
+    ['motor1_escabadora', 0.994901, 0.00071, 'Fragmento con presencia de motor en primer plano detectado correctamente por el modelo.'], 
+    ['motor1_camion', 0.99472, 0.012393, 'Nuevamente, se escucha un motor en primer plano el cual es detectado con alta probabilidad por el modelo.'], 
   ];
 
   /* Display Syntetic Audios */
@@ -273,14 +248,18 @@ function createTextHTML(text) {
       prefix = 'files/real_demo/terrestresyacuaticos/');
   
   /*Analisis Base sintetica */ 
-  generateAnalisisTable('analisis-table-synt-aereo', 'files/sintetica_analisis/aereo_true/' ,analisisAereoTrue, 1);
+  generateAnalisisTable('analisis-table-synt-aereo', 'files/sintetica_analisis/aereo_true/' ,analisisAereoTrueSynt, 1);
 
-  generateAnalisisTable('analisis-table-synt-motores', 'files/sintetica_analisis/motor_true/' , analisisMotoresTrue, 1);
+  generateAnalisisTable('analisis-table-synt-motores', 'files/sintetica_analisis/motor_true/' , analisisMotoresTrueSynt, 1);
 
-  generateAnalisisTable('analisis-table-synt-background', 'files/sintetica_analisis/back_true/' , analisisBackTrue, 1);
+  generateAnalisisTable('analisis-table-synt-background', 'files/sintetica_analisis/back_true/' , analisisBackTrueSynt, 1);
 
 
   /*Analisis Base real */
 
-  generateAnalisisTable('analisis-table-real', 'files/sintetica_analisis/aereo_true/' ,realAudiosBackground, 1);
+  generateAnalisisTable('analisis-table-real-aereos', 'files/real_analisis/aereo_true/' , analisisAereosTrueReal, 1);
+
+  generateAnalisisTable('analisis-table-real-motores', 'files/real_analisis/motor_true/' , analisisMotorTrueReal, 1);
+
+  generateAnalisisTable('analisis-table-real', 'files/sintetica_analisis/aereo_true/' ,realAudiosBackground, 1);  
   
