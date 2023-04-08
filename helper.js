@@ -153,17 +153,7 @@ function createTextHTML(text) {
     'e3223207-381f-45de-bf30-63cee54316f2',
   ];
   
-  const librispeechTestOtherContinuationFilenames = [
-    'b70a5670-b091-458e-9909-1c2e5cc4b804',
-    'ffe14b64-bfeb-4ad7-9900-bbc7355f4b39',
-    '1fa24317-ab52-44f4-926c-cb0571269265',
-    'ed2dc23b-868a-470f-a843-b22091152ea2',
-    '46c3472e-72fa-49f4-b7d3-3cb73a7a5541',
-    '0944c955-dc0b-4c87-a006-02d0f12adeec',
-    'b9a36f7a-3fdf-48fa-937f-f33aebb02834',
-    '2670ff3f-57e5-4871-b582-444d168f7da9',
-  ];
-  
+
   const syntetictAudios = [
     '1',
     '2',
@@ -234,16 +224,6 @@ function createTextHTML(text) {
     'Frei_20220125_200000_helicoptero3',
   ];
   
-  const acousticOnlyFilenames = [
-    'ss_only_1',
-    'ss_only_2',
-    'ss_only_3',
-    'ss_only_4',
-    'ss_only_5',
-    'ss_only_6',
-    'ss_only_7',
-    'ss_only_8',
-  ];
   
   const analisisAereoTrue = [
     ['Vehiculos_Aereos_soundscape_unimodal116', 0.000013, 0.999959, 'Se escucha acercándose un avión, y el modelo lo clasifica bien. Está presente en prácticamente todo el fragmento.'], 
@@ -259,15 +239,12 @@ function createTextHTML(text) {
     ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal107', 0.095523, 0.885046, 'Se nota claramente que hay un motor. Se clasifica como aéreo.'],
   ];
  
-  /*
-  generateContinuationTable(
-      'librispeech-test-clean-table', librispeechTestCleanContinuationFilenames,
-      1);
-  
-  generateContinuationTable(
-      'librispeech-test-other-table', librispeechTestOtherContinuationFilenames,
-      1);
-*/
+  const analisisBackTrue = [
+    ['Only_Background_soundscape_unimodal120', 0.001555, 0.000097, 'Si bien se escucha viento, no se encuentra saturado. Correctamente clasificado como fondo.'], 
+    ['Only_Background_soundscape_unimodal238', 0.791876, 0.000635, 'Este audio corresponde a fondo, si bien se escucha sobre el final una fuente no especificada. El modelo lo clasifica como motor, pero bien podría tratarse de un conjunto de vocalizaciones de animales.'], 
+  ];
+
+  /* Display Syntetic Audios */
   generateSimpleTable(
       'synteticAudios-table_motor', syntetictAudiosTerrestres,
       prefix = 'files/sintetica_demo/terrestresyacuaticos/');
@@ -280,6 +257,8 @@ function createTextHTML(text) {
     'synteticAudios-table_aereos', syntetictAudiosAereos,
     prefix = 'files/sintetica_demo/aereos/');
 
+  
+  /* Display Real Audios */
 
   generateSimpleTable(
       'realAudios-table_back', realAudiosBackground,
@@ -292,60 +271,16 @@ function createTextHTML(text) {
   generateSimpleTable(
       'realAudios-table_motor', realAudiosMotor,
       prefix = 'files/real_demo/terrestresyacuaticos/');
-
- /*     
-  generateAcousticGenerationTable(
-      'acoustic-generation-table', librispeechTestCleanContinuationFilenames, 1);
-  
-  
-  */
-
   
   /*Analisis Base sintetica */ 
   generateAnalisisTable('analisis-table-synt-aereo', 'files/sintetica_analisis/aereo_true/' ,analisisAereoTrue, 1);
 
   generateAnalisisTable('analisis-table-synt-motores', 'files/sintetica_analisis/motor_true/' , analisisMotoresTrue, 1);
 
-  generateAnalisisTable('analisis-table-synt-background', 'files/sintetica_analisis/motor_true/' , analisisMotoresTrue, 1);
+  generateAnalisisTable('analisis-table-synt-background', 'files/sintetica_analisis/back_true/' , analisisBackTrue, 1);
 
-  
+
+  /*Analisis Base real */
 
   generateAnalisisTable('analisis-table-real', 'files/sintetica_analisis/aereo_true/' ,realAudiosBackground, 1);
   
-  $(document).ready(function() {
-    for (let i = 1; i <= 5; i++) {
-      let id = '#clean-cont-page-' + i;
-      $(id).click(function() {
-        generateContinuationTable(
-            'librispeech-test-clean-table',
-            librispeechTestCleanContinuationFilenames, i);
-        $(id).parent().siblings().removeClass('active');
-        $(id).parent().addClass('active');
-        return false;
-      });
-    }
-    for (let i = 1; i <= 2; i++) {
-      let id = '#other-cont-page-' + i;
-      $(id).click(function() {
-        generateContinuationTable(
-            'librispeech-test-other-table',
-            librispeechTestOtherContinuationFilenames, i);
-        $(id).parent().siblings().removeClass('active');
-        $(id).parent().addClass('active');
-        return false;
-      });
-    }
-  
-    for (let i = 1; i <= 5; i++) {
-      let id = '#acoustic-page-' + i;
-      $(id).click(function() {
-        generateAcousticGenerationTable(
-            'acoustic-generation-table',
-            librispeechTestCleanContinuationFilenames, i);
-        $(id).parent().siblings().removeClass('active');
-        $(id).parent().addClass('active');
-        return false;
-      });
-    }
-  
-  });
