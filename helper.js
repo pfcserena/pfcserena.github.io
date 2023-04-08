@@ -217,6 +217,9 @@ function createTextHTML(text) {
   const analisisMotorTrueReal = [
     ['motor1_escabadora', 0.994901, 0.00071, 'Fragmento con presencia de motor en primer plano detectado correctamente por el modelo.'], 
     ['motor1_camion', 0.99472, 0.012393, 'Nuevamente, se escucha un motor en primer plano el cual es detectado con alta probabilidad por el modelo.'], 
+    ['BCAA1_20211230_140000_motor3', 0.904592, 0.441864, 'Se evidencia la presencia de un motor en primer plano detectado correctamente con alta probabilidad.'],
+    ['BCAA1_20220218_130000_motor3', 0.522382, 0.217309, 'Este audio se encuentra etiquetado con la presencia de un vehículo terrestre pasando, que al escucharlo se encuentra en segundo plano. Si bien el score no es demasiado alto, logra identificarlo correctamente.'], 
+    ['lancha2', 0.011228, 0.997381, 'En esta situación hay presencia de una lancha en donde el motor se encuentra en segundo plano. El modelo identifica erróneamente la presencia de un vehículo aéreo.'], 
   ];
 
   /* Display Syntetic Audios */
