@@ -202,28 +202,28 @@ function createTextHTML(text) {
   ];
  
   const analisisBackTrueSynt = [
-    ['Only_Background_soundscape_unimodal120', 0.001555, 0.000097, 'Si bien se escucha viento, no se encuentra saturado. Correctamente clasificado como fondo.'], 
-    ['Only_Background_soundscape_unimodal238', 0.791876, 0.000635, 'Este audio corresponde a fondo, si bien se escucha sobre el final una fuente no especificada. El modelo lo clasifica como motor, pero bien podría tratarse de un conjunto de vocalizaciones de animales.'], 
+    ['Only_Background_soundscape_unimodal120', 0.001555, 0.000097, 'La ausencia de fuentes es detectada correctamente por el modelo asignado scores bajos a ambas clases.'], 
+    ['Only_Background_soundscape_unimodal238', 0.791876, 0.000635, 'Ejemplo de confusión con vehículo terrestre. Se perciben vocalizaciones de animales al final de este audio.'], 
   ];
 
   const analisisAereosTrueReal = [
     ['Frei_20211206_180000_avion2', 0.001285, 0.99321, 'Fragmento con presencia de vehículos aéreos en primer plano el cual el sistema logra identificar correctamente.'], 
-    ['Frei_20220125_200000_helicoptero4', 0.002231, 0.993604, 'Nuevamente se escucha la fuente en primer plano y el modelo clasifica correctamente con alta confianza.'], 
-    ['ArdPF_20211216_090000_avion2', 0.006574, 0.941115, 'Fragmento con presencia de fuente en segundo plano, aún así el modelo logra clasificarlo correctamente.'], 
-    ['Frei_20211206_180000_avion4', 0.010079, 0.960842, 'Se escucha nuevamente un vehículo aéreo en segundo plano, y el modelo lo identifica correctamente.'], 
+    ['Frei_20220125_200000_helicoptero4', 0.002231, 0.993604, 'Fragmento con fuente en primer plano, en donde el modelo identifica la misma correctamente con alta confianza.'], 
+    ['ArdPF_20211216_090000_avion2', 0.006574, 0.941115, 'Fragmento con presencia de fuente en segundo plano, aún así el modelo logra identificarlo  correctamente.'], 
+    ['Frei_20211206_180000_avion4', 0.010079, 0.960842, 'Pasaje con fuente en segundo plano. El modelo lo identifica correctamente.'], 
     ['Frei_20220125_200000_helicoptero6', 0.069222, 0.3014, 'Se escucha un helicóptero en segundo plano. Si bien el modelo tiene un score no despreciable en la predicción de aéreo no logra identificar con la suficiente confianza la presencia de la fuente. '], 
   ];
 
   const analisisMotorTrueReal = [
     ['motor1_escabadora', 0.994901, 0.00071, 'Fragmento con presencia de motor en primer plano detectado correctamente por el modelo.'], 
-    ['motor1_camion', 0.99472, 0.012393, 'Nuevamente, se escucha un motor en primer plano el cual es detectado con alta probabilidad por el modelo.'], 
+    ['motor1_camion', 0.99472, 0.012393, 'Se escucha un motor en primer plano el cual es detectado con alta probabilidad por el modelo.'], 
     ['BCAA1_20211230_140000_motor3', 0.904592, 0.441864, 'Se evidencia la presencia de un motor en primer plano detectado correctamente con alta probabilidad.'],
-    ['BCAA1_20220218_130000_motor3', 0.522382, 0.217309, 'Este audio se encuentra etiquetado con la presencia de un vehículo terrestre pasando, que al escucharlo se encuentra en segundo plano. Si bien el score no es demasiado alto, logra identificarlo correctamente.'], 
-    ['lancha2', 0.011228, 0.997381, 'En esta situación hay presencia de una lancha en donde el motor se encuentra en segundo plano. El modelo identifica erróneamente la presencia de un vehículo aéreo.'], 
+    ['BCAA1_20220218_130000_motor3', 0.522382, 0.217309, 'Fragmento con presencia de motor en segundo plano. El modelo detecta sin gran confianza la presencia de la misma.'], 
+    ['lancha2', 0.011228, 0.997381, 'Ejemplo de confusión con vehículo aéreo. Fragmento con presencia de un motor en segundo plano.'], 
   ];
 
   const analisisBackTrueReal = [
-    ['Drake_20211229_110000_bg1', 0.004027 , 0.000692, 'No hay presencia de fuentes y es detectado correctamente asignado scores bajos'], 
+    ['Drake_20211229_110000_bg1', 0.004027 , 0.000692, 'No hay presencia de fuentes y es detectado correctamente asignado scores bajos.'], 
     ['PtaEu_20211231_180000_bg2', 0.005569, 0.022117, 'La ausencia de fuentes se detecta adecuadamente, se asignan puntuaciones bajas en consecuencia.'], 
     ['ArdPF_20220108_200000_bg3', 0.002243, 0.999602  , 'Ejemplo de confusión de un animal antártico con un vehículo aéreo.'], 
    ];
