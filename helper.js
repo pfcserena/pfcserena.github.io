@@ -188,17 +188,17 @@ function createTextHTML(text) {
   
   
   const analisisAereoTrueSynt = [
-    ['Vehiculos_Aereos_soundscape_unimodal116', 0.000013, 0.999959, 'Se escucha acercándose un avión, y el modelo lo clasifica bien. Está presente en prácticamente todo el fragmento.'], 
-    ['Vehiculos_Aereos_soundscape_unimodal570', 0.613815, 0.88884, 'Es claro que hay una fuente, que bien podría ser un motor o un avión. Parece ser inespecífico, y el modelo lo clasifica como ambas clases. La etiqueta original es aéreo, pero es ambiguo.'], 
-    ['Vehiculos_Aereos_soundscape_unimodal123', 0.917612, 0.017494, 'El avión se escucha en la primera mitad del audio y luego no hay fuente. Su sonido es similar a los audios de motores de esta misma base. Se clasifica como motor.'], 
-    ['Vehiculos_Aereos_soundscape_unimodal37', 0.261592, 0.496274, 'En este audio se escucha claramente un avión, pero la confianza en la clasificación no supera el umbral, por lo que no se logra clasificar correctamente. El modelo falla en otorgar una confianza menor al umbral para esta fuente.'],
+    ['Vehiculos_Aereos_soundscape_unimodal116', 0.000013, 0.999959, 'Fragmento con avión en primer plano. El modelo lo identifica correctamente. '], 
+    ['Vehiculos_Aereos_soundscape_unimodal570', 0.613815, 0.88884, 'Fragmento con fuente en segundo plano.  La etiqueta original es aérea, pero es ambigua al escuchar el audio. El modelo asigna un score no despreciable en ambas clases.'], 
+    ['Vehiculos_Aereos_soundscape_unimodal123', 0.917612, 0.017494, 'Ejemplo de confusión con vehículo terrestre. La fuente aparece brevemente en el fragmento y el modelo asigna score alto a la clase motor. '], 
+    ['Vehiculos_Aereos_soundscape_unimodal37', 0.261592, 0.496274, 'Ejemplo donde a pesar de existir presencia de fuente, el modelo no asigna score suficientemente alto en la clase de vehículo aéreo. '],
   ];
 
   const analisisMotoresTrueSynt = [
-    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal38', 0.998917, 0.003778, 'Fuente en primer plano, durante todo el fragmento, bien clasificado como motor.'], 
-    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal300', 0.999779, 0.000599, 'Es evidente que hay un motor en primer plano, y está correctamente clasificado como tal.'], 
-    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal102', 0.145242, 0.0798, 'Se escucha un sonido que podría deberse a saturación por viento o a una fuente, pero resulta tan evidente que sea un motor. Se asigna una confianza mayor a cero a esta clase pero no llega al umbral de decisión, por tanto se clasifica como fondo.'], 
-    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal107', 0.095523, 0.885046, 'Se nota claramente que hay un motor. Se clasifica como aéreo.'],
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal38', 0.998917, 0.003778, 'Fuente en primer plano durante todo el fragmento, identificado con alta confianza por el modelo.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal300', 0.999779, 0.000599, 'Resulta evidente la presencia de un motor en primer plano, el cual ha sido identificada de forma acertada por el modelo.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal102', 0.145242, 0.0798, 'Ejemplo de fuente en segundo plano, el score obtenido para la clase de interés es muy bajo.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal107', 0.095523, 0.885046, 'Ejemplo de confusión con vehículo aéreo.'],
   ];
  
   const analisisBackTrueSynt = [
