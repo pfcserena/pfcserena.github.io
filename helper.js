@@ -252,6 +252,12 @@ function createTextHTML(text) {
     ['Vehiculos_Aereos_soundscape_unimodal37', 0.261592, 0.496274, 'En este audio se escucha claramente un avión, pero la confianza en la clasificación no supera el umbral, por lo que no se logra clasificar correctamente. El modelo falla en otorgar una confianza menor al umbral para esta fuente.'],
   ];
 
+  const analisisMotoresTrue = [
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal38', 0.998917, 0.003778, 'Fuente en primer plano, durante todo el fragmento, bien clasificado como motor.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal300', 0.999779, 0.000599, 'Es evidente que hay un motor en primer plano, y está correctamente clasificado como tal.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal102', 0.145242, 0.0798, 'Se escucha un sonido que podría deberse a saturación por viento o a una fuente, pero resulta tan evidente que sea un motor. Se asigna una confianza mayor a cero a esta clase pero no llega al umbral de decisión, por tanto se clasifica como fondo.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal107', 0.095523, 0.885046, 'Se nota claramente que hay un motor. Se clasifica como aéreo.'],
+  ];
  
   /*
   generateContinuationTable(
@@ -295,10 +301,14 @@ function createTextHTML(text) {
   */
 
   
-
+  /*Analisis Base sintetica */ 
   generateAnalisisTable('analisis-table-synt-aereo', 'files/sintetica_analisis/aereo_true/' ,analisisAereoTrue, 1);
 
-  generateAnalisisTable('analisis-table', 'files/sintetica_analisis/aereo_true/' , realAudiosBackground, 1);
+  generateAnalisisTable('analisis-table-synt-motores', 'files/sintetica_analisis/motor_true/' , analisisMotoresTrue, 1);
+
+  generateAnalisisTable('analisis-table-synt-background', 'files/sintetica_analisis/motor_true/' , analisisMotoresTrue, 1);
+
+  
 
   generateAnalisisTable('analisis-table-real', 'files/sintetica_analisis/aereo_true/' ,realAudiosBackground, 1);
   
