@@ -44,6 +44,31 @@
       </p>
     </div>
 
+    <div class="container shadow p-5 mb-5 bg-white rounded">
+      <h3>Paisaje Sonoro Antártico</h3>
+
+      <p class="mb-0">
+        <br />
+        Ejemplos de muestras de paisaje sonoro antartico.
+      </p>
+
+      <!-- Solo Fondo -->
+      <div class="container pt-3 table-responsive">
+        <table
+          class="table table-striped table-hover"
+          id="background-table"
+        >
+          <thead>
+            <tr>
+              <th>Ejemplos de Muestras de Fondo</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+    </div>
+
     
     <div class="container shadow p-5 mb-5 bg-white rounded">
       <h3>Audios Sintéticos</h3>
@@ -53,46 +78,35 @@
         Debido a que no se contaba con una base de datos reales etiquetados se optó por generar una base sintética para entrenar los modelos. La misma fue generada con <a href="https://github.com/justinsalamon/scaper">Scaper</a>, una biblioteca de Python que crea nuevos paisajes sonoros a partir de combinar y transformar un conjunto de archivos de audio existentes. Como audios fuente se utilizaron fondos reales de Antártida los cuales fueron mezclados con sonidos de las fuentes que se desean identificar extraídos de <a href=" https://research.google.com/audioset/">AudioSet</a> y <a href=" https://freesound.org/">Freesound</a>. A continuación, se muestran algunos ejemplos de los audios sintéticos generados. 
       </p>
 
-      <!-- Solo Fondo -->
+      <!-- Vehículos Aereos -->
       <div class="container pt-3 table-responsive">
-        <table
+          <table
           class="table table-striped table-hover"
-          id="synteticAudios-table_back"
-        >
+          id="synteticAudios-table_aereos"
+          >
           <thead>
             <tr>
-              <th>Ejemplos de Muestras de Fondo</th>
+              <th>Ejemplos de Muestras de Vehículos Aéreos</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
+    </div>
 
-        <!-- Vehículos Aereos -->
-        <table
-        class="table table-striped table-hover"
-        id="synteticAudios-table_aereos"
-      >
-        <thead>
-          <tr>
-            <th>Ejemplos de Muestras de Vehículos Aéreos</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
 
       <!-- Vehículos Terrestres -->
+      <div class="container pt-3 table-responsive">
         <table
         class="table table-striped table-hover"
         id="synteticAudios-table_motor"
-      >
-        <thead>
-          <tr>
-            <th>Ejemplos de Muestras de Vehículos Terrestres y Acuáticos</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-
+        >
+          <thead>
+            <tr>
+              <th>Ejemplos de Muestras de Vehículos Terrestres y Acuáticos</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </div>
 
@@ -103,22 +117,6 @@
         <br />
         El método de grabación utilizado en el proyecto "Antartic Soundscapes" implica registrar los primeros cinco minutos de cada hora para capturar diversas fuentes sonoras presentes en el paisaje antártico, tanto naturales como antropogénicas. A continuación, se presentan algunos ejemplos de grabaciones reales, las cuales han sido recortados en fragmentos de 10 segundos para su presentación.
       </p>
-
-      <!-- Solo Fondo -->
-      <div class="container pt-3 table-responsive">
-        <table class="table table-striped table-hover" 
-               id="realAudios-table_back"
-        >
-          <thead>
-            <tr>
-              <th>
-                Ejemplos de Muestras de Fondo
-              </th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
 
       <!-- Vehículos Aereos -->
       <div class="container pt-3 table-responsive">

@@ -130,6 +130,20 @@ function createTextHTML(text) {
     }
   }
   
+  const audiosBackground = [
+    'ArdPF_20220112_010000_bg3',
+    'ArdPF_20220112_010000_bg4',
+    'Drake_20220105_190000_bg1',
+    'Drake_20220105_190000_bg2',
+    'Drake_20220108_200000_bg5',
+    'Drake_20220108_200000_bg6',
+    'Only_Background_soundscape_unimodal16',
+    'Only_Background_soundscape_unimodal239',
+    'Only_Background_soundscape_unimodal751',
+    'Only_Background_soundscape_unimodal1093',
+    'Only_Background_soundscape_unimodal1113',
+    'Only_Background_soundscape_unimodal1143',
+  ];
  
   const syntetictAudiosBackground = [
     'Only_Background_soundscape_unimodal16',
@@ -232,14 +246,19 @@ function createTextHTML(text) {
     ['ArdPF_20220108_200000_bg3', 0.002243, 0.999602  , 'En este caso el audio es ruidoso, existe una gran presencia de viento, y además se escucha un animal sobre el final del audio. Esto ocasiona que el sistema cometa un error y asigne un nivel de confianza alto a la presencia de vehículos aéreos.'], 
    ];
 
+
+  /* Display Background Audios */
+
+  generateSimpleTable(
+    'background-table', audiosBackground,
+    prefix = 'files/backgrounds_demo/');
+
+
+
   /* Display Syntetic Audios */
   generateSimpleTable(
       'synteticAudios-table_motor', syntetictAudiosTerrestres,
       prefix = 'files/sintetica_demo/terrestresyacuaticos/');
-
-  generateSimpleTable(
-    'synteticAudios-table_back', syntetictAudiosBackground,
-    prefix = 'files/sintetica_demo/backgrounds/');
 
   generateSimpleTable(
     'synteticAudios-table_aereos', syntetictAudiosAereos,
@@ -247,10 +266,6 @@ function createTextHTML(text) {
 
   
   /* Display Real Audios */
-
-  generateSimpleTable(
-      'realAudios-table_back', realAudiosBackground,
-      prefix = 'files/real_demo/backgrounds/');
 
   generateSimpleTable(
     'realAudios-table_aereo', realAudiosAereo,
