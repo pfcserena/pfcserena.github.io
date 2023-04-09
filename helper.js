@@ -144,15 +144,6 @@ function createTextHTML(text) {
     'Only_Background_soundscape_unimodal1113',
     'Only_Background_soundscape_unimodal1143',
   ];
- 
-  const syntetictAudiosBackground = [
-    'Only_Background_soundscape_unimodal16',
-    'Only_Background_soundscape_unimodal239',
-    'Only_Background_soundscape_unimodal751',
-    'Only_Background_soundscape_unimodal1093',
-    'Only_Background_soundscape_unimodal1113',
-    'Only_Background_soundscape_unimodal1143',
-  ];
 
   const syntetictAudiosAereos = [
     'Vehículos_Aereos_soundscape_unimodal1',
@@ -170,16 +161,6 @@ function createTextHTML(text) {
     'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal198',
     'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal417',
     'Vehiculos_acuaticos_y_terrestres_soundscape_unimodal601',
-  ];
-
-
-  const realAudiosBackground = [
-    'ArdPF_20220112_010000_bg3',
-    'ArdPF_20220112_010000_bg4',
-    'Drake_20220105_190000_bg1',
-    'Drake_20220105_190000_bg2',
-    'Drake_20220108_200000_bg5',
-    'Drake_20220108_200000_bg6',
   ];
 
   const realAudiosMotor = [
@@ -200,6 +181,17 @@ function createTextHTML(text) {
     'Frei_20220125_200000_helicoptero3',
   ];
   
+  /* Analisis Audio de Fondo */
+
+  const analisisBackTrue = [
+    ['Drake_20211229_110000_bg1', 0.004027 , 0.000692, 'En este caso no hay presencia de fuentes y esto es identificado correctamente por el sistema que asigna scores bajos para ambos tipos de fuentes.'], 
+    ['Only_Background_soundscape_unimodal120', 0.001555, 0.000097, 'La ausencia de fuentes es identificada correctamente por el modelo que asigna scores bajos a ambas clases.'], 
+    ['PtaEu_20211231_180000_bg2', 0.005569, 0.022117, 'En este caso el fondo es particularmente ruidoso donde existe una gran presencia de viento, sin embargo el sistema detecta adecuadamente, asignando scores bajos a los dos tipos de fuentes.'], 
+    ['ArdPF_20220108_200000_bg3', 0.002243, 0.999602  , 'En este caso el audio es ruidoso, existe una gran presencia de viento, y además se escucha un animal sobre el final del audio. Esto ocasiona que el sistema cometa un error y asigne un nivel de confianza alto a la presencia de vehículos aéreos.'], 
+    ['Only_Background_soundscape_unimodal238', 0.791876, 0.000635, 'En este caso, si bien el audio es de fondo, el sistema asigna una probabilidad elevada a la presencia de vehículo terrestre. Se entiende que si bien el modelo identifica incorrectamente el viento del audio puede prestarse a confusión al ser escuchado.'], 
+   
+  ];
+
   
   /* Analisis Base Sintetica */
 
@@ -240,13 +232,6 @@ function createTextHTML(text) {
     ['lancha2', 0.011228, 0.997381, 'En este caso el sistema detecta con confianza elevada la presencia de un vehículo aéreo y con probabilidad cercana a 0 la presencia de vehículos acuáticos y terrestres. Se destaca que en este caso al escuchar el audio el mismo despierta dudas respecto a la fuente presente sobre todo al escuchar el final del audio donde podría tratarse de una avioneta despegando.'], 
   ];
 
-  const analisisBackTrueReal = [
-    ['Drake_20211229_110000_bg1', 0.004027 , 0.000692, 'En este caso no hay presencia de fuentes y esto es identificado correctamente por el sistema que asigna scores bajos para ambos tipos de fuentes.'], 
-    ['PtaEu_20211231_180000_bg2', 0.005569, 0.022117, 'En este caso el fondo es particularmente ruidoso donde existe una gran presencia de viento, sin embargo el sistema detecta adecuadamente, asignando scores bajos a los dos tipos de fuentes.'], 
-    ['ArdPF_20220108_200000_bg3', 0.002243, 0.999602  , 'En este caso el audio es ruidoso, existe una gran presencia de viento, y además se escucha un animal sobre el final del audio. Esto ocasiona que el sistema cometa un error y asigne un nivel de confianza alto a la presencia de vehículos aéreos.'], 
-   ];
-
-
   /* Display Background Audios */
 
   generateSimpleTable(
@@ -275,12 +260,16 @@ function createTextHTML(text) {
       'realAudios-table_motor', realAudiosMotor,
       prefix = 'files/real_demo/terrestresyacuaticos/');
   
+
+  /* Analisis de Fondo Antártico */
+  
+  generateAnalisisTable('analisis-table-background', 'files/backgrounds_analisis/' , analisisBackTrue, 1);
+
+
   /*Analisis Base sintetica */ 
   generateAnalisisTable('analisis-table-synt-aereo', 'files/sintetica_analisis/aereo_true/' ,analisisAereoTrueSynt, 1);
 
   generateAnalisisTable('analisis-table-synt-motores', 'files/sintetica_analisis/motor_true/' , analisisMotoresTrueSynt, 1);
-
-  generateAnalisisTable('analisis-table-synt-background', 'files/sintetica_analisis/back_true/' , analisisBackTrueSynt, 1);
 
 
   /*Analisis Base real */
@@ -289,5 +278,3 @@ function createTextHTML(text) {
 
   generateAnalisisTable('analisis-table-real-motores', 'files/real_analisis/motor_true/' , analisisMotorTrueReal, 1);
 
-  generateAnalisisTable('analisis-table-real-background', 'files/real_analisis/back_true/' ,analisisBackTrueReal, 1);  
-  
