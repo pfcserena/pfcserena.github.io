@@ -187,45 +187,49 @@ function createTextHTML(text) {
   ];
   
   
+  /* Analisis Base Sintetica */
+
   const analisisAereoTrueSynt = [
-    ['Vehiculos_Aereos_soundscape_unimodal116', 0.000013, 0.999959, 'Fragmento con avión en primer plano. El modelo lo identifica correctamente. '], 
-    ['Vehiculos_Aereos_soundscape_unimodal570', 0.613815, 0.88884, 'Fragmento con fuente en segundo plano.  La etiqueta original es aérea, pero es ambigua al escuchar el audio. El modelo asigna un score no despreciable en ambas clases.'], 
-    ['Vehiculos_Aereos_soundscape_unimodal123', 0.917612, 0.017494, 'Ejemplo de confusión con vehículo terrestre. La fuente aparece brevemente en el fragmento y el modelo asigna score alto a la clase motor. '], 
-    ['Vehiculos_Aereos_soundscape_unimodal37', 0.261592, 0.496274, 'Ejemplo donde a pesar de existir presencia de fuente, el modelo no asigna score suficientemente alto en la clase de vehículo aéreo. '],
+    ['Vehiculos_Aereos_soundscape_unimodal116', 0.000013, 0.999959, 'Este fragmento presenta un avión en primer plano. Se observa que modelo lo identifica correctamente ya que asigna un score elevado a la presencia de vehículos aéreos y un score aproximadamente nulo a vehículos terrestres y acuáticos.'], 
+    ['Vehiculos_Aereos_soundscape_unimodal570', 0.613815, 0.88884, 'En este fragmento la fuente se encuentra en segundo plano. Si bien la etiqueta real es aérea, se observa que al escuchar el audio no es sencillo identificar la fuente. El modelo asigna un score no despreciable en ambas clases pero le asigna más probabilidad a la clase correcta.'], 
+    ['Vehiculos_Aereos_soundscape_unimodal123', 0.917612, 0.017494, 'En este caso la fuente aparece brevemente en el fragmento. El modelo asigna score alto a la clase motor por lo que reconoce en forma incorrecta la fuente.'], 
+    ['Vehiculos_Aereos_soundscape_unimodal37', 0.261592, 0.496274, 'En este caso la fuente se encuentra en todo el audio pero el modelo no asigna score alto en la clase de vehículo aéreo. Se destaca que en este caso el avión aparenta estar despegando, lo cual podría estar vinculado con los resultados obtenidos ya que en esta circunstancia el sonido del mismo es diferente al que realiza cuando está en marcha.'],
   ];
 
   const analisisMotoresTrueSynt = [
-    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal38', 0.998917, 0.003778, 'Fuente en primer plano durante todo el fragmento, identificado con alta confianza por el modelo.'], 
-    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal300', 0.999779, 0.000599, 'Resulta evidente la presencia de un motor en primer plano, el cual ha sido identificada de forma acertada por el modelo.'], 
-    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal102', 0.145242, 0.0798, 'Ejemplo de fuente en segundo plano, el score obtenido para la clase de interés es muy bajo.'], 
-    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal107', 0.095523, 0.885046, 'Ejemplo de confusión con vehículo aéreo.'],
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal38', 0.998917, 0.003778, 'En este caso la fuente se encuentra en primer plano durante todo el fragmento y la misma es identificada con un alto nivel de confianza por el modelo.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal300', 0.999779, 0.000599, 'Resulta evidente la presencia de un motor en primer plano el cual es identificada en forma acertada por el modelo ya que asigna un score elevado a dicha fuente y un score casi nulo a la presencia de vehículos aéreos.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal102', 0.145242, 0.0798, 'La fuente se encuentra en segundo plano y el score obtenido para la clase correcta es muy bajo. Sin embargo, se observa que el score obtenido para la clase incorrecta es aún más bajo que el obtenido para la clase correcta.'], 
+    ['Vehiculos_acuaticos_y_terrestres_soundscape_unimodal107', 0.095523, 0.885046, 'En este caso la fuente se encuentra presente por poco más que la mitad del fragmento pero el modelo detecta con mayor confianza la presencia de un vehículo aéreo.'],
   ];
  
   const analisisBackTrueSynt = [
-    ['Only_Background_soundscape_unimodal120', 0.001555, 0.000097, 'La ausencia de fuentes es detectada correctamente por el modelo asignado scores bajos a ambas clases.'], 
-    ['Only_Background_soundscape_unimodal238', 0.791876, 0.000635, 'Ejemplo de confusión con vehículo terrestre. Se perciben vocalizaciones de animales al final de este audio.'], 
+    ['Only_Background_soundscape_unimodal120', 0.001555, 0.000097, 'La ausencia de fuentes es identificada correctamente por el modelo que asigna scores bajos a ambas clases.'], 
+    ['Only_Background_soundscape_unimodal238', 0.791876, 0.000635, 'En este caso, si bien el audio es de fondo, el sistema asigna una probabilidad elevada a la presencia de vehículo terrestre. Se entiende que si bien el modelo identifica incorrectamente el viento del audio puede prestarse a confusión al ser escuchado.'], 
   ];
 
+  /* Analisis Base Real */
+
   const analisisAereosTrueReal = [
-    ['Frei_20211206_180000_avion2', 0.001285, 0.99321, 'Fragmento con presencia de vehículos aéreos en primer plano el cual el sistema logra identificar correctamente.'], 
-    ['Frei_20220125_200000_helicoptero4', 0.002231, 0.993604, 'Fragmento con fuente en primer plano, en donde el modelo identifica la misma correctamente con alta confianza.'], 
-    ['ArdPF_20211216_090000_avion2', 0.006574, 0.941115, 'Fragmento con presencia de fuente en segundo plano, aún así el modelo logra identificarlo  correctamente.'], 
-    ['Frei_20211206_180000_avion4', 0.010079, 0.960842, 'Pasaje con fuente en segundo plano. El modelo lo identifica correctamente.'], 
-    ['Frei_20220125_200000_helicoptero6', 0.069222, 0.3014, 'Se escucha un helicóptero en segundo plano. Si bien el modelo tiene un score no despreciable en la predicción de aéreo no logra identificar con la suficiente confianza la presencia de la fuente. '], 
+    ['Frei_20211206_180000_avion2', 0.001285, 0.99321, 'Se escucha el vehículo aéreo en primer plano y el sistema logra identificarlo correctamente puesto que asigna un score aproximadamente 1 a esa clase.'], 
+    ['Frei_20220125_200000_helicoptero4', 0.002231, 0.993604, 'En este caso se cuenta con la fuente en primer plano y el modelo identifica la misma con confianza elevada.'], 
+    ['ArdPF_20211216_090000_avion2', 0.006574, 0.941115, 'En este fragmento la fuente se encuentra en segundo plano y aún así el modelo logra identificarla correctamente con confianza elevada.'], 
+    ['Frei_20211206_180000_avion4', 0.010079, 0.960842, 'En este audio se escucha un vehículo aéreo y los scores obtenidos demuestran que el modelo identifica la presencia de la fuente con confianza elevada.'], 
+    ['Frei_20220125_200000_helicoptero6', 0.069222, 0.3014, 'En este audio se escucha un helicóptero y el score obtenido es mayor en la predicción de vehículos aéreos respecto a vehículos terrestres y acuáticos. Sin embargo, se destaca que el modelo no logra identificar con una confianza considerable la presencia de la fuente.'], 
   ];
 
   const analisisMotorTrueReal = [
-    ['motor1_escabadora', 0.994901, 0.00071, 'Fragmento con presencia de motor en primer plano detectado correctamente por el modelo.'], 
-    ['motor1_camion', 0.99472, 0.012393, 'Se escucha un motor en primer plano el cual es detectado con alta probabilidad por el modelo.'], 
-    ['BCAA1_20211230_140000_motor3', 0.904592, 0.441864, 'Se evidencia la presencia de un motor en primer plano detectado correctamente con alta probabilidad.'],
-    ['BCAA1_20220218_130000_motor3', 0.522382, 0.217309, 'Fragmento con presencia de motor en segundo plano. El modelo detecta sin gran confianza la presencia de la misma.'], 
-    ['lancha2', 0.011228, 0.997381, 'Ejemplo de confusión con vehículo aéreo. Fragmento con presencia de un motor en segundo plano.'], 
+    ['motor1_escabadora', 0.994901, 0.00071, 'En este fragmento se nota la presencia de un motor en primer plano, lo cual es correctamente identificado por el modelo que otorga un score elevado a la presencia de vehículos terrestres y acuáticos.'], 
+    ['motor1_camion', 0.99472, 0.012393, 'En este audio se escucha un motor en primer plano, el cual es detectado con probabilidad cercana a 1 por el modelo.'], 
+    ['BCAA1_20211230_140000_motor3', 0.904592, 0.441864, 'En este caso es evidente la presencia de un motor el cual es identificado correctamente por el modelo que asigna alta probabilidad a la clase vehículos terrestres y acuáticos.'],
+    ['BCAA1_20220218_130000_motor3', 0.522382, 0.217309, 'Este fragmento, si bien es ruidoso, contiene un motor el cual es identificado con baja confianza por el modelo. Se destaca que además el score para vehículos aéreos no es despreciable en este caso.'], 
+    ['lancha2', 0.011228, 0.997381, 'En este caso el sistema detecta con confianza elevada la presencia de un vehículo aéreo y con probabilidad cercana a 0 la presencia de vehículos acuáticos y terrestres. Se destaca que en este caso al escuchar el audio el mismo despierta dudas respecto a la fuente presente sobre todo al escuchar el final del audio donde podría tratarse de una avioneta despegando.'], 
   ];
 
   const analisisBackTrueReal = [
-    ['Drake_20211229_110000_bg1', 0.004027 , 0.000692, 'No hay presencia de fuentes y es detectado correctamente asignado scores bajos.'], 
-    ['PtaEu_20211231_180000_bg2', 0.005569, 0.022117, 'La ausencia de fuentes se detecta adecuadamente, se asignan puntuaciones bajas en consecuencia.'], 
-    ['ArdPF_20220108_200000_bg3', 0.002243, 0.999602  , 'Ejemplo de confusión de un animal antártico con un vehículo aéreo.'], 
+    ['Drake_20211229_110000_bg1', 0.004027 , 0.000692, 'En este caso no hay presencia de fuentes y esto es identificado correctamente por el sistema que asigna scores bajos para ambos tipos de fuentes.'], 
+    ['PtaEu_20211231_180000_bg2', 0.005569, 0.022117, 'En este caso el fondo es particularmente ruidoso donde existe una gran presencia de viento, sin embargo el sistema detecta adecuadamente, asignando scores bajos a los dos tipos de fuentes.'], 
+    ['ArdPF_20220108_200000_bg3', 0.002243, 0.999602  , 'En este caso el audio es ruidoso, existe una gran presencia de viento, y además se escucha un animal sobre el final del audio. Esto ocasiona que el sistema cometa un error y asigne un nivel de confianza alto a la presencia de vehículos aéreos.'], 
    ];
 
   /* Display Syntetic Audios */
