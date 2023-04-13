@@ -198,7 +198,7 @@ function createTextHTML(text) {
   const analisisAereoTrueSynt = [
     ['Vehiculos_Aereos_soundscape_unimodal116', 0.000013, 0.999959, 'Este fragmento presenta un avión en primer plano. Se observa que modelo lo identifica correctamente ya que asigna un score elevado a la presencia de vehículos aéreos y un score aproximadamente nulo a vehículos terrestres y acuáticos.'], 
     ['Vehiculos_Aereos_soundscape_unimodal570', 0.613815, 0.88884, 'En este fragmento la fuente se encuentra en segundo plano. Si bien la etiqueta real es aérea, se observa que al escuchar el audio no es sencillo identificar la fuente. El modelo asigna un score no despreciable en ambas clases pero le asigna más probabilidad a la clase correcta.'], 
-    ['Vehiculos_Aereos_soundscape_unimodal123', 0.917612, 0.017494, 'En este caso la fuente aparece brevemente en el fragmento. El modelo asigna score alto a la clase motor por lo que reconoce en forma incorrecta la fuente.'], 
+    ['Vehiculos_Aereos_soundscape_unimodal123', 0.917612, 0.017494, 'En este caso el vehículo aéreo aparece brevemente en el fragmento. El modelo asigna score alto a la clase motor por lo que reconoce en forma incorrecta la fuente.'], 
     ['Vehiculos_Aereos_soundscape_unimodal37', 0.261592, 0.496274, 'En este caso la fuente se encuentra en todo el audio pero el modelo no asigna score alto en la clase de vehículo aéreo. Se destaca que en este caso el avión aparenta estar despegando, lo cual podría estar vinculado con los resultados obtenidos ya que en esta circunstancia el sonido del mismo es diferente al que realiza cuando está en marcha.'],
   ];
 
